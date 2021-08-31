@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace HandleMyQueue.Models
+namespace HandleMyQueue.Models.DTOs
 {
     public class CredentialsDto
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using HandleMyQueue.Models;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using HandleMyQueue.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

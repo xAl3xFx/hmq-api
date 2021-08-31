@@ -1,14 +1,15 @@
-﻿using System.Text.Json;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace HandleMyQueue.Models
 {
-    public class Queue
+    public class Message
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string QueueId { get; set; }
+        public string MessageId { get; set; }
+
+        public BsonDateTime CreatedAt { get; set; }
 
         public string UserName { get; set; }
 
@@ -16,7 +17,6 @@ namespace HandleMyQueue.Models
 
         public BsonBoolean Processed { get; set; }
 
-        public BsonDocument QueueContent { get; set; }
-
+        public BsonDocument MessageContent { get; set; }
     }
 }

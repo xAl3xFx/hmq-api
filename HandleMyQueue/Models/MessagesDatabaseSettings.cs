@@ -1,15 +1,15 @@
 ﻿namespace HandleMyQueue.Models
 {
-    public class QueuesDatabaseSettings : IQueuesDatabaseSettings
+    public class MessagesDatabaseSettings : IMessagesDatabaseSettings
     {
-        public string QueuesCollectionName { get; set; }
+        public string MessagesCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
 
-    public interface IQueuesDatabaseSettings
+    public interface IMessagesDatabaseSettings
     {
-        string QueuesCollectionName { get; set; }
+        string MessagesCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

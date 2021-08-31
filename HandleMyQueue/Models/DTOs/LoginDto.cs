@@ -1,4 +1,4 @@
-﻿namespace HandleMyQueue.Models
+﻿namespace HandleMyQueue.Models.DTOs
 {
     public class LoginDto
     {

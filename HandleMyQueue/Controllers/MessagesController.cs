@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using HandleMyQueue.Models;
+using HandleMyQueue.Models.DTOs;
 using HandleMyQueue.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,34 +14,34 @@ namespace HandleMyQueue.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class QueuesController : ControllerBase
+    public class MessagesController : ControllerBase
     {
-        private readonly QueuesService _queuesService;
+        private readonly MessagesService _messagesService;
 
-        public QueuesController(QueuesService queuesService)
+        public MessagesController(MessagesService messagesService)
         {
-            _queuesService = queuesService;
+            _messagesService = messagesService;
         }
 
-        [HttpGet("getAllQueues")]
-        public async Task<List<QueueDto>> GetQueues()
+        [HttpGet("getAllMessages")]
+        public async Task<List<MessageDto>> GetQueues()
         {
             var username = User.Claims.First(c => c.Type.Equals("preferred_username")).Value;
-            return await _queuesService.GetAllQueuesForUser(username);
+            return await _messagesService.GetAllMessagesForUser(username);
         }
 
-        [HttpGet("countAllQueues")]
-        public async Task<long> CountQueues()
+        [HttpGet("countAllMessages")]
+        public async Task<MessageCountDto> CountQueues()
         {
             var username = User.Claims.First(c => c.Type.Equals("preferred_username")).Value;
-            return await _queuesService.CountAllQueuesForUser(username);
+            return await _messagesService.CountAllMessagesForUser(username);
         }
 
         [HttpPost]
-        public void Create(QueueDto queueDto)
+        public void Create(MessageDto messageDto)
         {
             var username = User.Claims.First(c => c.Type.Equals("preferred_username")).Value;
-            _queuesService.Create(queueDto, username);
+            _messagesService.Create(messageDto, username);
         }
     }
 }

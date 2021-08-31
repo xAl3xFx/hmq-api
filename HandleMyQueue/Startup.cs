@@ -46,13 +46,13 @@ namespace HandleMyQueue
                     });
             });
             services.Configure<RouteOptions>(opt => opt.LowercaseUrls = true);
-            services.Configure<QueuesDatabaseSettings>(
-                Configuration.GetSection(nameof(QueuesDatabaseSettings)));
+            services.Configure<MessagesDatabaseSettings>(
+                Configuration.GetSection(nameof(MessagesDatabaseSettings)));
 
-            services.AddSingleton<IQueuesDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<QueuesDatabaseSettings>>().Value);
-            // services.AddSingleton<QueuesService>();
-            services.AddSingleton<QueuesService>();
+            services.AddSingleton<IMessagesDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<MessagesDatabaseSettings>>().Value);
+            // services.AddSingleton<MessagesService>();
+            services.AddSingleton<MessagesService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddControllers();
